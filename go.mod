@@ -1,4 +1,4 @@
-module kubeclient
+module kube-operations
 
 go 1.13
 

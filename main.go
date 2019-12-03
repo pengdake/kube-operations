@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/pengdake/kube-operations/common"
+	"github.com/pengdake/kube-operations/pkg/common"
 	"k8s.io/api/core/v1"
 	"fmt"
 )
