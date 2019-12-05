@@ -1,20 +1,15 @@
 package main
 
 import (
-	"github.com/pengdake/kube-operations/pkg/common"
 	"k8s.io/api/core/v1"
 	"fmt"
+
+	"kube-operations/pkg/resource"
 )
 
 func main(){
-	kubeClient, err := common.KubeClient(restClientConf)
-	if err != nil{
-		panic(err)
-	}
-	req := kubeClient.CoreV1().Pods("admin").GetLogs("res-imp-xusf-test-nznhc9zr-snbw5", &v1.PodLogOptions{})
-	res, err := req.DoRaw()
-	if err != nil{
-		panic(err)
-	}
-	fmt.Println(string(res))
+	options := &v1.PodLogOptions{}
+	podcontroller := resource.NewPodController("admin")
+	log := podcontroller.GetLog("res-imp-xusf-test-u6orzvrx-xrxcc", options)
+	fmt.Println(log)
 }
